@@ -1,12 +1,10 @@
-# StayHealthy
+# Medical Appointment Booking
 
-StayHealthy is a non-profit healthcare platform for the Go Digital initiative. It helps patients in remote and underserved areas book a doctor online, anytime and from anywhere.
+**Project name:** Medical Appointment Booking
 
-This repository contains the static layout pages and the React application used for the final project.
+Medical Appointment Booking is the StayHealthy front-end capstone. StayHealthy is a non-profit healthcare platform for the Go Digital initiative. It helps patients in remote and underserved areas book a doctor online, anytime and from anywhere.
 
-## Project name
-
-**StayHealthy**
+This repository contains the static layout pages and the React application used for the final project, plus setup instructions.
 
 Live site: https://medical-booking-layouts.vercel.app/
 
