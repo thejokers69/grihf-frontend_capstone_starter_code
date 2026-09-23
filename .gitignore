@@ -218,4 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
--l
+.DS_Store
+
+# StayHealthy app
+node_modules/
+.env
+.vercel
+server/data/

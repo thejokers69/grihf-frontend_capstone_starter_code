@@ -1,0 +1,3 @@
+curl -s -X POST http://127.0.0.1:3001/api/auth/register -H 'Content-Type: application/json' -d '{"role":"patient","name":"Amina El Fassi","email":"amina.1790155562@example.com","phone":"+212612345678","password":"StayHealthy1"}'
+
+{"status":"success","message":"User registered.","authtoken":"cc56ecbaee81666dffff9f0d6da9c32064bb64e0a80c6a14","user":{"id":"342d2f6b-0424-42c3-a97e-b1cff5c5d098","role":"patient","name":"Amina El Fassi","email":"amina.1790155562@example.com","phone":"+212612345678"}}
