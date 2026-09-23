@@ -1,23 +1,30 @@
 # StayHealthy
 
-HTML and CSS for the medical appointment booking lab. Three pages: the navbar on the home screen, the sign-up form, and the login form. Shared styles live in `css/styles.css`.
+Medical appointment booking layouts. Each screen has its own folder, with the HTML and CSS kept together.
 
-Preview with any static server:
+```
+Landing_Page/   LandingPage.html  LandingPage.css
+Login/          Login.html        Login.css
+Navbar/         Navbar.html       Navbar.css
+Sign_up/        Sign_up.html      Sign_up.css
+```
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then open [http://localhost:8080](http://localhost:8080).
+Home: <http://localhost:8080/Landing_Page/LandingPage.html>
+
+Login and Sign Up in the navbar go to those forms. Each form links back to the other.
 
 ## Home
 
-![Home page with the StayHealthy navbar](Screenshot/Home.png)
+![Home page](Screenshot/Home.png)
 
 ## Login
 
-![Login form](Screenshot/login.png)
+![Login form](Screenshot/login_form_layout.png)
 
 ## Sign up
 
-![Sign-up form](Screenshot/signup.png)
+![Sign-up form](Screenshot/signup_form_layout.png)

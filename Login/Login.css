@@ -1,0 +1,92 @@
+@import url("../Navbar/Navbar.css");
+
+.auth-wrap {
+  display: grid;
+  place-items: start center;
+  padding: 2rem 1.25rem 3.5rem;
+}
+
+.auth-card {
+  width: min(460px, 100%);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem 1.6rem 1.6rem;
+}
+
+.kicker {
+  color: var(--brand-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-card h1 {
+  font-size: 1.55rem;
+  margin-bottom: 0.25rem;
+}
+
+.auth-card p.sub {
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 0.9rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 650;
+  font-size: 0.86rem;
+  margin-bottom: 0.35rem;
+}
+
+.form-group label .req {
+  color: var(--danger);
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font: inherit;
+  background: #fff;
+  color: var(--ink);
+}
+
+input:focus {
+  outline: 3px solid var(--brand-soft);
+  border-color: var(--brand);
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0.8rem 0 1.1rem;
+}
+
+.checkbox input {
+  margin-top: 0.2rem;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 0.75rem 1rem;
+}
+
+.switch-auth {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
