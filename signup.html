@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StayHealthy | Sign Up</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">+</span>
+        StayHealthy
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#appointments">Appointments</a></li>
+          <li><a href="index.html#doctors">Find a Doctor</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="login.html">Login</a>
+        <a class="btn btn-primary" href="signup.html">Sign Up</a>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ========== SIGN-UP FORM (screenshot this card) ========== -->
+  <main class="auth-wrap">
+    <section class="auth-card" aria-labelledby="signup-title">
+      <p class="kicker">New patient or doctor</p>
+      <h1 id="signup-title">Create your account</h1>
+      <p class="sub">Join StayHealthy to book and manage medical appointments.</p>
+
+      <form action="#" method="post" novalidate>
+        <div class="form-group">
+          <label for="role">I am registering as <span class="req">*</span></label>
+          <div class="role-pills">
+            <label>
+              <input type="radio" name="role" value="patient" checked />
+              Patient
+            </label>
+            <label>
+              <input type="radio" name="role" value="doctor" />
+              Doctor
+            </label>
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="form-group">
+            <label for="firstName">First name <span class="req">*</span></label>
+            <input id="firstName" name="firstName" type="text" placeholder="Amina" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last name <span class="req">*</span></label>
+            <input id="lastName" name="lastName" type="text" placeholder="El Fassi" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone number <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" placeholder="+212 6 12 34 56 78" required />
+        </div>
+
+        <div class="row-2">
+          <div class="form-group">
+            <label for="password">Password <span class="req">*</span></label>
+            <input id="password" name="password" type="password" placeholder="••••••••" minlength="8" required />
+            <p class="hint">At least 8 characters.</p>
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirm password <span class="req">*</span></label>
+            <input id="confirm" name="confirm" type="password" placeholder="••••••••" required />
+          </div>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" name="terms" required />
+          <span>I agree to the Terms of Service and the Privacy Policy.</span>
+        </label>
+
+        <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+      </form>
+
+      <p class="switch-auth">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </section>
+  </main>
+
+  <p class="footer-note">StayHealthy · Lab layout · Sign-Up form</p>
+</body>
+</html>
