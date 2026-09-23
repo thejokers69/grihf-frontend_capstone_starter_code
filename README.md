@@ -1,45 +1,23 @@
-# StayHealthy — Lab layouts (Navbar, Sign-Up, Login)
+# StayHealthy
 
-Static HTML + CSS for the Medical Appointment Booking website lab.
+HTML and CSS for the medical appointment booking lab. Three pages: the navbar on the home screen, the sign-up form, and the login form. Shared styles live in `css/styles.css`.
 
-## Files
-
-| File | What to screenshot |
-| --- | --- |
-| `index.html` | Navigation Bar (full header + home strip) |
-| `signup.html` | Sign-Up form card |
-| `login.html` | Login form card |
-| `css/styles.css` | Shared styles |
-
-## How to test locally
-
-Open any HTML file in a browser (double-click, or Live Server / VS Code preview).
+Preview with any static server:
 
 ```bash
-# optional local server
 python3 -m http.server 8080
-# then visit http://localhost:8080
 ```
 
-## Screenshots for the final project
+Then open [http://localhost:8080](http://localhost:8080).
 
-Save as `.png` or `.jpeg`:
+## Home
 
-1. Navbar — capture the white header on `index.html` (logo, links, Login / Sign Up).
-2. Sign-Up — capture the form card on `signup.html`.
-3. Login — capture the form card on `login.html`.
+![Home page with the StayHealthy navbar](Screenshot/Home.png)
 
-Also keep your **GitHub repository URL**.
+## Login
 
-## Suggested GitHub steps
+![Login form](Screenshot/login.png)
 
-```bash
-git init
-git add .
-git commit -m "Add StayHealthy navbar, signup and login layouts"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
+## Sign up
 
-Enable GitHub Pages (Settings → Pages → Deploy from `main` / root) if the lab asks for a live URL.
+![Sign-up form](Screenshot/signup.png)
