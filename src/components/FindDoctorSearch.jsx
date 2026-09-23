@@ -1,46 +1,59 @@
 import React, { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const FindDoctorSearch = ({ doctors, onResults }) => {
-  const [query, setQuery] = useState('')
+export const DOCTOR_SPECIALTIES = [
+  'General practice',
+  'Pediatrics',
+  'Cardiology',
+  'Mental health',
+  'Dermatology',
+  'Dentist'
+]
 
-  const matches = useMemo(() => {
-    const needle = query.trim().toLowerCase()
-    if (!needle) return doctors
-    return doctors.filter((doctor) => {
-      const haystack = `${doctor.name} ${doctor.specialty} ${doctor.location}`.toLowerCase()
-      return haystack.includes(needle)
-    })
-  }, [doctors, query])
+const FindDoctorSearch = () => {
+  const navigate = useNavigate()
+  const [specialtyQuery, setSpecialtyQuery] = useState('')
+  const [showSpecialties, setShowSpecialties] = useState(true)
 
-  const runSearch = (event) => {
-    event.preventDefault()
-    onResults(matches, query.trim())
+  const selectableSpecialties = useMemo(() => {
+    const needle = specialtyQuery.trim().toLowerCase()
+    if (!needle) return DOCTOR_SPECIALTIES
+    return DOCTOR_SPECIALTIES.filter((specialty) => specialty.toLowerCase().includes(needle))
+  }, [specialtyQuery])
+
+  const selectSpecialty = (specialty) => {
+    setSpecialtyQuery(specialty)
+    setShowSpecialties(false)
+    navigate(`/search/doctors/${encodeURIComponent(specialty)}`)
   }
 
   return (
-    <form className="search-bar" onSubmit={runSearch} role="search">
-      <label htmlFor="doctor-search">Find a doctor</label>
-      <div className="search-row">
-        <input
-          id="doctor-search"
-          type="search"
-          value={query}
-          placeholder="Search by name, specialty, or location"
-          onChange={(event) => {
-            const next = event.target.value
-            setQuery(next)
-            const needle = next.trim().toLowerCase()
-            const live = !needle
-              ? doctors
-              : doctors.filter((doctor) =>
-                `${doctor.name} ${doctor.specialty} ${doctor.location}`.toLowerCase().includes(needle)
-              )
-            onResults(live, next.trim())
-          }}
-        />
-        <button className="btn btn-primary" type="submit">Search</button>
-      </div>
-    </form>
+    <div className="doctor-search">
+      <label htmlFor="specialty-search">Search doctors by specialty</label>
+      <input
+        id="specialty-search"
+        type="search"
+        value={specialtyQuery}
+        placeholder="Choose a specialty"
+        onFocus={() => setShowSpecialties(true)}
+        onChange={(event) => {
+          setSpecialtyQuery(event.target.value)
+          setShowSpecialties(true)
+        }}
+      />
+      {showSpecialties && (
+        <ul className="specialty-list" aria-label="Selectable doctor specialties">
+          {selectableSpecialties.map((specialty) => (
+            <li key={specialty}>
+              <button type="button" onClick={() => selectSpecialty(specialty)}>
+                {specialty}
+              </button>
+            </li>
+          ))}
+          {selectableSpecialties.length === 0 && <li className="empty">No specialties match that search.</li>}
+        </ul>
+      )}
+    </div>
   )
 }
 

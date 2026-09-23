@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import FindDoctorSearch from './FindDoctorSearch.jsx'
 import AppointmentForm from './AppointmentForm.jsx'
 import AppointmentFormIC from './AppointmentFormIC.jsx'
@@ -12,8 +13,12 @@ const DIRECTORY = [
 ]
 
 const Appointment = () => {
-  const [results, setResults] = useState(DIRECTORY)
-  const [query, setQuery] = useState('')
+  const { specialty: specialtyParam } = useParams()
+  const specialty = specialtyParam ? decodeURIComponent(specialtyParam) : ''
+  const results = useMemo(() => {
+    if (!specialty) return DIRECTORY
+    return DIRECTORY.filter((doctor) => doctor.specialty.toLowerCase() === specialty.toLowerCase())
+  }, [specialty])
   const [selected, setSelected] = useState(DIRECTORY[0])
   const [booked, setBooked] = useState([
     {
@@ -27,6 +32,8 @@ const Appointment = () => {
       type: 'scheduled'
     }
   ])
+
+  const activeDoctor = results.find((doctor) => doctor.id === selected?.id) || results[0]
 
   const addBooking = (appointment) => {
     const doctor = DIRECTORY.find((item) => item.name === appointment.doctorName)
@@ -47,16 +54,10 @@ const Appointment = () => {
         <p className="lede">Search the directory, then book an instant call or a scheduled appointment.</p>
       </header>
 
-      <FindDoctorSearch
-        doctors={DIRECTORY}
-        onResults={(matches, term) => {
-          setResults(matches)
-          setQuery(term)
-        }}
-      />
+      <FindDoctorSearch />
       <p className="result-count">
-        {query
-          ? `${results.length} ${results.length === 1 ? 'doctor' : 'doctors'} matching “${query}”`
+        {specialty
+          ? `${results.length} ${results.length === 1 ? 'doctor' : 'doctors'} for ${specialty}`
           : `${results.length} ${results.length === 1 ? 'doctor' : 'doctors'} available`}
       </p>
 
@@ -67,7 +68,7 @@ const Appointment = () => {
               <li key={doctor.id}>
                 <button
                   type="button"
-                  className={selected?.id === doctor.id ? 'doctor-pick selected' : 'doctor-pick'}
+                  className={activeDoctor?.id === doctor.id ? 'doctor-pick selected' : 'doctor-pick'}
                   onClick={() => setSelected(doctor)}
                 >
                   <strong>Dr. {doctor.name}</strong>
@@ -82,7 +83,7 @@ const Appointment = () => {
 
         <section className="booking-forms" aria-label="Booking forms">
           <AppointmentFormIC onBooked={addBooking} />
-          <AppointmentForm doctorName={selected?.name} onBooked={addBooking} />
+          <AppointmentForm doctorName={activeDoctor?.name} onBooked={addBooking} />
         </section>
       </div>
 
